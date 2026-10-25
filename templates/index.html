@@ -1,32 +1,52 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="./static/mywebscript.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emotion Detector</title>
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    >
+    <script src="{{ url_for('static', filename='mywebscript.js') }}" defer></script>
     <style>
-        .center-heading {
-            text-align: center;
-        }
+        body { background: #f4f6f8; }
+        .page-wrap { max-width: 900px; margin: 48px auto; }
+        .center-heading { text-align: center; }
+        #system_response { white-space: pre-wrap; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-body">
-            <h1 class="center-heading">NLP - Emotion Detection</h1> 
-            <div style="padding: 25px 25px 25px 25px;">
-            <h2 class="mb-3">
-                <label class="form-label">Please enter the text to be analyzed</label>
-                <input type="textarea" class="form-control" id="textToAnalyze">
-            </h2>
-
-            <div style="padding: 25px 25px 25px 25px;">
-                <button onclick="RunSentimentAnalysis()" class="btn btn-secondary">Run Sentiment Analysis</button>
+    <main class="container page-wrap">
+        <section class="card shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                <h1 class="center-heading mb-4">NLP — Emotion Detection</h1>
+                <label for="textToAnalyze" class="font-weight-bold">
+                    Enter the text to be analyzed
+                </label>
+                <textarea
+                    class="form-control"
+                    id="textToAnalyze"
+                    rows="4"
+                    placeholder="For example: I am so happy to be here."
+                    aria-describedby="inputHelp"
+                ></textarea>
+                <small id="inputHelp" class="form-text text-muted">
+                    The detector identifies anger, disgust, fear, joy, and sadness.
+                </small>
+                <button
+                    type="button"
+                    id="analyzeButton"
+                    class="btn btn-primary mt-3"
+                >Analyze emotions</button>
+                <div class="mt-4" aria-live="polite">
+                    <h2 class="h5">Result of Emotion Detection</h2>
+                    <div id="system_response" class="border rounded bg-light p-3">
+                        Your analysis will appear here.
+                    </div>
+                </div>
             </div>
-            <div style="padding: 25px 25px 25px 25px;"></div>
-            <h2 class="mb-3">
-                <label class="form-label">Result of Emotion Detection</label>
-            </h2>
-
-            <div id="system_response" style="padding: 25px 25px 25px 25px;"></div>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
+</html>
