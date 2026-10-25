@@ -23,7 +23,7 @@ def detect_emotion():
         }), 400
 
     result = emotion_detector(text_to_analyze)
-    if result is None:
+    if result["dominant_emotion"] is None:
         return jsonify({
             "error": (
                 "Emotion detection could not process this text. "
@@ -42,4 +42,4 @@ def detect_emotion():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
