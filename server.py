@@ -4,7 +4,7 @@ from flask import Flask, jsonify, render_template, request
 
 from EmotionDetection import emotion_detector
 
-app = Flask(__name__)
+app = Flask(__name__)  # pylint: disable=invalid-name
 
 
 @app.get("/")
